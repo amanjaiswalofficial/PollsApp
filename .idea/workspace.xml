@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cafff229-df36-44b1-9faf-7e90eeeee79c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitgnore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/posts/error_messages.py" beforeDir="false" afterPath="$PROJECT_DIR$/posts/error_messages.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/posts/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/posts/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/posts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/posts/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,11 +37,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/posts/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret lean-forward="true" />
+            <state relative-caret-position="542">
+              <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="47" />
               <folding>
                 <element signature="e#0#52#0" expanded="true" />
               </folding>
@@ -73,11 +70,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/posts/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="25" column="17" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
+            <state relative-caret-position="273">
+              <caret line="14" column="27" lean-forward="true" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
@@ -146,11 +143,6 @@
               <item name="PollsApp" type="462c0819:PsiDirectoryNode" />
               <item name="PollsApp" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="PollsApp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PollsApp" type="462c0819:PsiDirectoryNode" />
-              <item name="posts" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -190,7 +182,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1313" height="743" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2496124" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -291,16 +282,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/posts/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="25" column="17" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/posts/permissions.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
@@ -313,10 +294,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/posts/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret lean-forward="true" />
+        <state relative-caret-position="542">
+          <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="47" />
           <folding>
             <element signature="e#0#52#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/posts/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="14" column="27" lean-forward="true" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
           </folding>
         </state>
       </provider>
