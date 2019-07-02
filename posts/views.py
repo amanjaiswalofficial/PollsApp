@@ -44,7 +44,7 @@ class QuestionViewUpdateSet(viewsets.ModelViewSet):
 
     def get_question(self, request, pk):
         """Return a particular question based on id provided"""
-        current_question, object_exists = self.check_valid_object(pk)
+        current_question, object_exists = check_valid_object(self.queryset, pk=pk)
         if object_exists:
             serializer = QuestionSerializer(current_question, many=True)
             return Response(serializer.data)
@@ -53,7 +53,7 @@ class QuestionViewUpdateSet(viewsets.ModelViewSet):
     def update_question(self, request, pk):
         """Update a particular question's text after authenticating the logged in user"""
         objects = self.queryset.objects.filter(Q(id=pk))
-        current_object, object_exists = self.check_valid_object(pk)
+        current_object, object_exists = check_valid_object(self.queryset, id=pk)
         if object_exists:
             object_instance = objects[0]
             self.check_object_permissions(request, object_instance)
@@ -64,7 +64,7 @@ class QuestionViewUpdateSet(viewsets.ModelViewSet):
 
     def delete_question(self, request, pk):
         """Delete a question after checking if it exists and whether current user is authenticated"""
-        current_object, object_exists = self.check_valid_object(pk)
+        current_object, object_exists = check_valid_object(self.queryset, pk=pk)
         if object_exists:
             self.queryset.objects.filter(pk=pk).delete()
             return Response(DELETE_SUCCESSFUL_MESSAGE)
@@ -75,11 +75,6 @@ class QuestionViewUpdateSet(viewsets.ModelViewSet):
         for field in validated_data.keys():
             setattr(instance, field, validated_data.get(field))
         return instance
-
-
-    # def delete(self, pk):
-    #     self.queryset.objects.filter(pk=pk).delete()
-    #     # return self.queryset
 
 
 class ChoiceCreateUpdateDeleteView(viewsets.ModelViewSet):
@@ -103,16 +98,26 @@ class ChoiceCreateUpdateDeleteView(viewsets.ModelViewSet):
 
     def create_choice(self, request):
         """Create a choice for a question based on it's id provided and authenticating the user"""
+        filters = {}
         serializer = ChoiceSerializer(data=request.data)
         current_user, error_message = check_user(self.request.user)
         if serializer.is_valid() and not error_message:
-            object_instance = request.data.get('question')
+            object_instance = request.data.get('question', None)
             self.check_object_permissions(request, object_instance)
-            self.perform_create(serializer)
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
+            filters['question'] = object_instance
+            filters['choice_text'] = request.data.get('choice_text', None)
+            current_object, object_exists = check_valid_object(self.queryset, **filters)
+            if object_exists:
+                self.perform_create(serializer)
+                response = serializer.data
+                response_status = status.HTTP_201_CREATED
+            else:
+                response = INVALID_ENTRY_ERROR
+                response_status = status.HTTP_400_BAD_REQUEST
         else:
-            error = error_message if error_message else serializer.errors
-        return Response(error, status=status.HTTP_400_BAD_REQUEST)
+            response = error_message if error_message else serializer.errors
+            response_status = status.HTTP_400_BAD_REQUEST
+        return Response(response, response_status)
 
     def update_choice(self, request):
         """Updates choice for a question based on question and choice_id provided"""
@@ -191,6 +196,7 @@ def check_user(user):
     else:
         error_message = INVALID_CREDENTIAL_ERROR
     return current_user, error_message
+
 
 def check_valid_object(queryset, **kwargs):
     """Check if provided filters match any object or objects, return a query_dict"""

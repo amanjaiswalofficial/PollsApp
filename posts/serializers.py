@@ -9,6 +9,7 @@ class QuestionSerializer(serializers.ModelSerializer):
         extra_kwargs = {'created_by': {'required': False}}
 
 class ChoiceSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = Choice
         fields = ('question','choice_text',)
