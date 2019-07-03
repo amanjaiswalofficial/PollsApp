@@ -105,8 +105,8 @@ class ChoiceCreateUpdateDeleteView(viewsets.ModelViewSet):
             object_instance = request.data.get('question', None)
             self.check_object_permissions(request, object_instance)
             filters['question'] = object_instance
-            filters['choice_text'] = request.data.get('choice_text', None)
             current_object, object_exists = check_valid_object(self.queryset, **filters)
+            filters['choice_text'] = request.data.get('choice_text', None)
             if object_exists:
                 self.perform_create(serializer)
                 response = serializer.data
